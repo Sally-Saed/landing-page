@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechLaunch - صفحة هبوط</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="landing.css">
+</head>
+
+<body>
+
+
+  <nav class="navbar">
+    <a href="#home" class="logo"> TechLaunch </a> <!---اسم الكلاس الذي سنستخدمه لتنسيق الشعار -->
+    <ul class="nav-links">
+      <li> <a href="#home">الرئيسية</a> </li>    <!---الانتقال الى العنصر ااذي يحمل id = home -->
+      <li> <a href="#features">المميزات</a> </li>
+      <li> <a href="#testimonials">الآراء</a> </li>
+      <li> <a href="#footer">تواصل معنا</a> </li>
+    </ul>
+  </nav>
+
+  <!-- القسم الرئيسي -->
+
+  <header class="hero" id="home">
+
+    <div class="hero-content">
+      <h1>اصنع شيئًا مذهلًا</h1>
+      <p>المنصة الحديثة لمطوري الويب. أطلق مشاريعك أسرع، وتوسّع بشكل أفضل، وأسعد مستخدميك.</p>
+
+      <div class="hero-buttons">
+        <a href="#features" class="btn btn-primary">ابدأ الآن</a>   <!-- التنسيق الخاص بالزر الأساسي -->
+        <a href="#testimonials" class="btn btn-outline">اعرف المزيد</a>  <!--التنسيق الخاص بالزر ذي الإطار-->
+      </div>
+
+    </div>
+  </header>
+
+  <!-- المميزات -->
+   
+  <section class="features" id="features">   <!-- id="features"هذا المعرف المستخدم في رابط المميزات الموجود فيNavbar.-->
+
+    <h2 class="section-title">لماذا تختارنا</h2>
+    <p class="section-subtitle">كل ما تحتاجه لبناء مواقع حديثة</p>
+
+    <div class="features-grid">
+
+      <article class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>سريع كالبرق</h3>
+        <p>أداء محسّن يتم تحميله في أجزاء من الثانية. سيحب مستخدموك هذه السرعة.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>آمن من البداية</h3>
+        <p>حماية بمستوى الشركات الكبرى في كل طبقة. نَم مطمئنًا.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h3>سهل النشر</h3>
+        <p>نشر بنقرة واحدة على أي مزود سحابي. لا تحتاج إلى خبرة في DevOps.</p>
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- آراء العملاء -->
+
+  <section class="testimonials" id="testimonials">
+
+    <h2 class="section-title">ماذا يقول الناس</h2>
+
+    <div class="testimonials-row">
+
+      <figure class="testimonial-card">
+
+        <!--<blockquote>هذا العنصر مخصص للاقتباسات. يعني النص الذي نقله الموقع عن العميل-->
+       
+          <blockquote>"غيّرت هذه المنصة طريقة بنائنا للمنتجات. انخفض وقت التطوير لدينا إلى النصف."</blockquote>
+        <figcaption class="author">
+          <img src="https://i.pravatar.cc/120?img=47" alt="سارة جونسون">
+          <div> <strong>سارة جونسون</strong> <span>المديرة التقنية، TechCorp</span> </div>
+        </figcaption>
+      </figure>
+
+      <figure class="testimonial-card">
+        <blockquote>"أفضل تجربة تطوير مررت بها. مرتبة، سهلة الفهم، وقوية."</blockquote>
+        <figcaption class="author">
+          <img src="https://i.pravatar.cc/120?img=12" alt="أحمد حسن">
+          <div> <strong>أحمد حسن</strong> <span>كبير المطورين، StartupXYZ</span> </div>
+        </figcaption>
+      </figure>
+
+      <figure class="testimonial-card">
+        <blockquote>"نقلنا بنيتنا التقنية كاملة خلال عطلة نهاية أسبوع واحدة. توثيق رائع!"</blockquote>
+        <figcaption class="author">
+          <img src="https://i.pravatar.cc/120?img=32" alt="ماريا غارسيا">
+          <div> <strong>ماريا غارسيا</strong> <span>المؤسِّسة، WebFlow</span> </div>
+        </figcaption>
+      </figure>
+
+    </div>
+
+  </section>
+
+  <!-- التذييل -->
+
+  <footer class="footer" id="footer">
+
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#features">المميزات</a></li>
+          <li><a href="#">الأسعار</a></li>
+          <li><a href="#">التوثيق</a></li>
+          <li><a href="#">المدونة</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+
+        <h4>من نحن</h4>
+        <p>TechLaunch منصة حديثة لتطوير الويب، صُممت للمطورين الذين يهتمون بالسرعة والأمان والبساطة. تأسست عام 2024.</p>
+      
+      </div>
+
+      <div class="footer-col">
+
+        <h4>تواصل معنا</h4>
+        <ul class="social-links">
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Discord</a></li>
+        </ul>
+     
+      </div>
+      
+    </div>
+    
+    <p class="footer-bottom">© 2026 TechLaunch. جميع الحقوق محفوظة.</p>
+  </footer>
+
+</body>
+</html>

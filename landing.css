@@ -1,0 +1,294 @@
+
+:root {
+  --bg:        #0f1020;   /* خلفية الصفحة */
+  --surface:   #181a30;   /* البطاقات */
+  --border:    #2a2d4a;   /* الحدود */
+  --text:      #e8e9f5;   /* النص الأساسي */
+  --muted:     #9a9cb8;   /* النص الثانوي */
+  --accent:    #6c7bff;   /* لون التمييز */
+  --accent-2:  #8f5cff;
+  --nav-h:     70px;      /* ارتفاع شريط التنقل */
+  --radius:    14px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }  /*معناها جعل التمرير ناعمًا وسلسًا اي يحدث الانتقال تدريجيًا بدل القفز المباش*/
+
+body {
+  font-family: "Tajawal", "Segoe UI", Tahoma, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding-top: var(--nav-h);   /* حتى لا يغطي الشريط الثابت المحتوى */
+}
+
+a  { color: inherit; text-decoration: none; }
+/*الرابط يرث لون النص من العنصر الأب أو من التنسيق الموروث*/
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* عنصر مشترك لعناوين الأقسام */
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.section-subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+
+
+/* ==========================================================
+   المهمة 1: شريط تنقل ثابت (Flexbox)
+   ========================================================== */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;   /* الشعار في جهة والروابط في الجهة الأخرى */
+  align-items: center;              /* توسيط عمودي */
+
+  position: fixed;                  /* ثابت عند التمرير */
+  top: 0;
+  width: 100%;
+  height: var(--nav-h);
+  padding: 0 40px;
+  z-index: 1000;
+
+  background: rgba(15, 16, 32, 0.92);
+  backdrop-filter: blur(8px);  /*هذه الخاصية تضيف تأثير الضبابية إلى المحتوى الموجود خلف الشريط*/
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;  /* الروابط في صف واحد */
+  gap: 28px;  /*تترك مسافة 28px بين كل رابط والرابط الآخر*/
+}
+.nav-links a {
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+
+/* ==========================================================
+   المهمة 2: القسم الرئيسي Hero (Flexbox)
+   ========================================================== */
+
+.hero {
+  display: flex;
+  justify-content: center;          /* توسيط أفقي (المحور الرئيسي) */
+  align-items: center;              /* توسيط عمودي (المحور العرضي) */
+  min-height: 100vh;                /* ملء ارتفاع الشاشة */
+  margin-top: calc(var(--nav-h) * -1); /* لتعويض padding-top في body فيمتد الـ hero خلف الشريط , calcدالة تسمح لنا بإجراء عمليات حسابية داخل CSS */
+  padding: var(--nav-h) 20px 0;
+  text-align: center;
+
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(108,123,255,0.25), transparent 60%),
+    var(--bg);
+}
+
+.hero-content { max-width: 720px; }
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);   /* حجم متجاوب , حجم العنوان يتغير تلقائيًا حسب حجم الشاشة، ضمن حدود محددة */
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin-bottom: 2.2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;            /* يحترم الحشو والعرض */
+  padding: 13px 32px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: transform 0.2s, background 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+.btn-outline {
+  border: 2px solid var(--border);
+  color: var(--text);
+}
+.btn-outline:hover { border-color: var(--accent); }
+
+
+/* ==========================================================
+   المهمة 3: قسم المميزات (CSS Grid - 3 أعمدة)
+   ========================================================== */
+
+.features {
+  padding: 90px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* 3 أعمدة متساوية,هذه الخاصية تحدد عدد الأعمدة وعرض كل عمود */
+  gap: 25px;
+}
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 26px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.feature-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.feature-icon { font-size: 2.4rem; margin-bottom: 14px; }
+.feature-card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+.feature-card p  { color: var(--muted); }
+
+
+/* ==========================================================
+   المهمة 4: آراء العملاء (Flexbox - صف بمسافات متساوية)
+   ========================================================== */
+
+.testimonials {
+  padding: 90px 40px;
+  background: #0b0c19;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.testimonials-row {
+  display: flex;
+  gap: 20px;                        /* مسافات متساوية بين البطاقات */
+  flex-wrap: wrap;                  /* الالتفاف لسطر جديد في الشاشات الصغيرة */
+  justify-content: center;          /* توسيط البطاقات */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  flex: 1 1 300px;                  /* تكبر وتتقلص، وأقل عرض مبدئي 300px */
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;   /* المؤلف دائمًا في أسفل البطاقة */
+  gap: 24px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.testimonial-card blockquote {
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+.author {
+  display: flex;                    /* الصورة بجانب الاسم */
+  align-items: center;
+  gap: 14px;
+}
+.author img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover; /*تجعل الصورة تملأ المساحة المحددة دون تشويه أبعادها*/
+  border: 2px solid var(--accent);
+}
+.author div { display: flex; flex-direction: column; }
+.author span { color: var(--muted); font-size: 0.9rem; }
+
+
+/* ==========================================================
+   المهمة 5: التذييل (CSS Grid - 3 أعمدة)
+   ========================================================== */
+
+.footer {
+  padding: 70px 40px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* 3 أعمدة */
+  gap: 30px;
+}
+
+.footer-col h4 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.footer-col li { margin-bottom: 8px; }
+.footer-col a,
+.footer-col p { color: var(--muted); }
+.footer-col a:hover { color: var(--accent); }
+
+/* روابط التواصل الاجتماعي في صف واحد مع التفاف */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.footer-bottom {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+
+/* ==========================================================
+ التجاوب مع الشاشات الصغيرة       
+   ========================================================== */
+   
+@media (max-width: 900px) {
+  .features-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;            /* عمود واحد */
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar { padding: 0 18px; }
+  .nav-links { gap: 14px; font-size: 0.9rem; }
+  .features, .testimonials, .footer { padding-left: 20px; padding-right: 20px; }
+}
